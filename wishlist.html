@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .con2{
+            /* border: 1px solid; */
+            display: grid;
+            grid-template-columns: auto;
+            text-align: center;
+            justify-content: center;
+            gap: 1%;
+        }
+        .c1{
+            /* border: 1px solid;    */
+            box-shadow: 1px 1px 2px gray;
+
+        }
+        .img1{
+        width: 100px;
+        height: 40%;
+    }
+    </style>
+</head>
+<body>
+    <script>
+        
+        var a = JSON.parse(localStorage.getItem("add"));
+        console.log(a)
+        var container1 = document.createElement("div")
+        container1.classList.add("con2")
+
+
+        a.map(function(val,ind,src){
+            var child1 = document.createElement("div")
+            var img1 = document.createElement("img")
+            img1.classList.add("img1")
+            var title1 = document.createElement("h3")
+            var price1 = document.createElement("h2")
+            var btn1 = document.createElement("button")
+            btn1.innerText = "Remove"
+
+            img1.src = val.img
+            title1.innerText = val.title
+            price1.innerText = val.price
+
+            btn1.addEventListener("click",function(){
+                child1.remove();
+            })
+            
+
+
+            child1.append(img1,title1,price1,btn1)
+            container1.append(child1)
+
+            child1.classList.add("c1")
+
+        })
+        document.body.append(container1)
+        console.log(container1)
+    </script>
+</body>
+</html>
